@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NCIProjects.Models.Submission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentTechnologies.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.linkedin_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.project_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.short_desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.long_desc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentTechnologies.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.linkedin_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.project_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.short_desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.long_desc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

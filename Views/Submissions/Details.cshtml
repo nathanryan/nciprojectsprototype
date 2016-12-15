@@ -1,0 +1,66 @@
+﻿@model NCIProjects.Models.Submission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Submission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTechnologies.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTechnologies.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.linkedin_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.linkedin_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.project_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.project_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.short_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.short_desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.long_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.long_desc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

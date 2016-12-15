@@ -1,0 +1,77 @@
+﻿@model NCIProjects.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+        {
+            <dt>
+                Avatar
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
+            </dd>
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stream.stream_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stream.stream_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supervisor.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supervisor.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
