@@ -74,3 +74,8 @@ C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.Migrations
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.Migrations.AddTechID.resources
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.Migrations.AddFiles.resources
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.Migrations.ChangeFileField.resources
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.Migrations.RemoveTech.resources
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.csprojResolveAssemblyReference.cache
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\RdlCompile.cache
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\RdlCompile.compiled
