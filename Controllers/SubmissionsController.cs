@@ -40,7 +40,7 @@ namespace NCIProjects.Controllers
         // GET: Submissions/Create
         public ActionResult Create()
         {
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname");
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentDetails");
           //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID");
             return View();
         }
@@ -59,7 +59,7 @@ namespace NCIProjects.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentDetails", submission.StudentID);
           //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }
@@ -76,7 +76,7 @@ namespace NCIProjects.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentDetails", submission.StudentID);
           //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }
@@ -94,7 +94,7 @@ namespace NCIProjects.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentDetails", submission.StudentID);
            //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }

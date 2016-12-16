@@ -79,3 +79,7 @@ C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\Microsoft.ReportViewer.WebFo
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\NCIProjects.csprojResolveAssemblyReference.cache
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\RdlCompile.cache
 C:\Users\nathan\Desktop\NCIProjects\NCIProjects\obj\Debug\RdlCompile.compiled
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\PagedList.dll
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\PagedList.Mvc.dll
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\PagedList.xml
+C:\Users\nathan\Desktop\NCIProjects\NCIProjects\bin\PagedList.Mvc.xml

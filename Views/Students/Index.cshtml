@@ -1,63 +1,48 @@
-﻿@model IEnumerable<NCIProjects.Models.Student>
+﻿@model PagedList.IPagedList<NCIProjects.Models.Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students";
 }
 
-<h2>Index</h2>
+<h2>Students</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.course_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stream.stream_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Supervisor.first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lname)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.course_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stream.stream_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Supervisor.first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lname)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
-        </td>
-    </tr>
-}
+@using (Html.BeginForm(Html.BeginForm("Index", "Students", FormMethod.Get)))
+{ <p> Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p> }
 
-</table>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Html.DisplayFor(modelItem => item.lname), @Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.StudentNumber) </h3>
+                    </div>
+                    <div class="panel-body" style="color: #000">
+                        <ul style="list-style-type:none">
+                            <li><b>Course: </b>@Html.DisplayFor(modelItem => item.Course.course_name)</li>
+                            <li><b>Stream: </b>@Html.DisplayFor(modelItem => item.Stream.stream_name)</li>
+                            <li><b>Supervisor: </b>@Html.DisplayFor(modelItem => item.Supervisor.first_name) @Html.DisplayFor(modelItem => item.Supervisor.last_name)</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="panel-footer" style="color: #000">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<br /> Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

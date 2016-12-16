@@ -69,6 +69,9 @@ namespace NCIProjects.Models
         public String email { get; set; }
 
         public virtual ICollection<Student> Student { get; set; }
+
+        //concatenate name to display in SelectList
+        public string SupervisorDetails { get { return first_name + " " + last_name; } }
     }
 
     public class Submission

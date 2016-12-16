@@ -7,7 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NCIProjects.Models;
+
 using System.Data.Entity.Infrastructure;
+using PagedList;
 
 namespace NCIProjects.Controllers
 {
@@ -16,10 +18,35 @@ namespace NCIProjects.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var students = db.Students.Include(s => s.Course).Include(s => s.Stream).Include(s => s.Supervisor);
-            return View(students.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else { searchString = currentFilter; }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in db.Students
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString)) { students = students.Where(s => s.lname.ToUpper().Contains(searchString.ToUpper()) || s.fname.ToUpper().Contains(searchString.ToUpper())); }
+
+            //sort Students by Last Name
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.lname);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.lname);
+                    break;
+            }
+            int pageSize = 6; int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Students/Details/5
@@ -42,7 +69,7 @@ namespace NCIProjects.Controllers
         {
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "course_name");
             ViewBag.StreamID = new SelectList(db.Streams, "ID", "stream_name");
-            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "first_name");
+            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "SupervisorDetails");
             return View();
         }
 
@@ -77,7 +104,7 @@ namespace NCIProjects.Controllers
 
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "course_name", student.CourseID);
             ViewBag.StreamID = new SelectList(db.Streams, "ID", "stream_name", student.StreamID);
-            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "first_name", student.SupervisorID);
+            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "SupervisorDetails", student.SupervisorID);
             return View(student);
         }
 
@@ -95,7 +122,7 @@ namespace NCIProjects.Controllers
             }
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "course_name", student.CourseID);
             ViewBag.StreamID = new SelectList(db.Streams, "ID", "stream_name", student.StreamID);
-            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "first_name", student.SupervisorID);
+            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "SupervisorDetails", student.SupervisorID);
             return View(student);
         }
 
@@ -147,7 +174,7 @@ namespace NCIProjects.Controllers
             }
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "course_name", studentToUpdate.CourseID);
             ViewBag.StreamID = new SelectList(db.Streams, "ID", "stream_name", studentToUpdate.StreamID);
-            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "first_name", studentToUpdate.SupervisorID);
+            ViewBag.SupervisorID = new SelectList(db.Supervisors, "ID", "SupervisorDetails", studentToUpdate.SupervisorID);
             return View(studentToUpdate);
         }
 
