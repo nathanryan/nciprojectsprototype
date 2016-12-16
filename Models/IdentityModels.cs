@@ -79,13 +79,13 @@ namespace NCIProjects.Models
         public String project_title { get; set; }
         public String short_desc { get; set; }
         public String long_desc { get; set; }
-        public int StudentTechnologiesID { get; set; }
+      //public int StudentTechnologiesID { get; set; }
 
         public virtual Student Student { get; set; }
-        public virtual StudentTechnologies StudentTechnologies { get; set; }
+      //public virtual StudentTechnologies StudentTechnologies { get; set; }
     }
 
-    public class StudentTechnologies
+   /* public class StudentTechnologies
     {
         public int ID { get; set; }
         public int TechnologiesID { get; set; }
@@ -100,7 +100,7 @@ namespace NCIProjects.Models
         public String tech_name { get; set; }
 
         public virtual ICollection<StudentTechnologies> StudentTechnologies { get; set; }
-    }
+    } */
 
     public enum FileType
     {
@@ -163,6 +163,6 @@ namespace NCIProjects.Models
 
         public DbSet<Submission> Submissions { get; set; }
 
-        public DbSet<StudentTechnologies> StudentTechnologies { get; set; }
+      //public DbSet<StudentTechnologies> StudentTechnologies { get; set; }
     }
 }

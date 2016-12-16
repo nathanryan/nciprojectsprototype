@@ -17,7 +17,8 @@ namespace NCIProjects.Controllers
         // GET: Submissions
         public ActionResult Index()
         {
-            var submissions = db.Submissions.Include(s => s.Student).Include(s => s.StudentTechnologies);
+          //var submissions = db.Submissions.Include(s => s.Student).Include(s => s.StudentTechnologies);
+            var submissions = db.Submissions.Include(s => s.Student);
             return View(submissions.ToList());
         }
 
@@ -40,7 +41,7 @@ namespace NCIProjects.Controllers
         public ActionResult Create()
         {
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname");
-            ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID");
+          //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID");
             return View();
         }
 
@@ -59,7 +60,7 @@ namespace NCIProjects.Controllers
             }
 
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
-            ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
+          //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }
 
@@ -76,7 +77,7 @@ namespace NCIProjects.Controllers
                 return HttpNotFound();
             }
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
-            ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
+          //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }
 
@@ -94,7 +95,7 @@ namespace NCIProjects.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "fname", submission.StudentID);
-            ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
+           //ViewBag.StudentTechnologiesID = new SelectList(db.StudentTechnologies, "ID", "ID", submission.StudentTechnologiesID);
             return View(submission);
         }
 

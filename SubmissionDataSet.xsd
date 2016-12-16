@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SubmissionDataSet" targetNamespace="http://tempuri.org/SubmissionDataSet.xsd" xmlns:mstns="http://tempuri.org/SubmissionDataSet.xsd" xmlns="http://tempuri.org/SubmissionDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="aspnet_NCIProjects_20161215090933ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="aspnet_NCIProjects_20161215090933ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.aspnet_NCIProjects_20161215090933ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SubmissionsTableAdapter" GeneratorDataComponentClassName="SubmissionsTableAdapter" Name="Submissions" UserDataComponentName="SubmissionsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="aspnet_NCIProjects_20161215090933ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Submissions.ID, Submissions.StudentID, Submissions.linkedin_url, Submissions.project_title, Submissions.short_desc, Submissions.long_desc, Students.StudentID AS Expr1, Students.StudentNumber, 
+                         Students.fname, Students.lname, Students.CourseID, Students.StreamID, Students.SupervisorID, Files.FileId, Files.FileName, Files.ContentType, Files.[Content], Files.FileType, Files.StudentID AS Expr2
+FROM            Submissions INNER JOIN
+                         Students ON Submissions.StudentID = Students.StudentID INNER JOIN
+                         Files ON Students.StudentID = Files.StudentID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="StudentID" DataSetColumn="StudentID" />
+              <Mapping SourceColumn="linkedin_url" DataSetColumn="linkedin_url" />
+              <Mapping SourceColumn="project_title" DataSetColumn="project_title" />
+              <Mapping SourceColumn="short_desc" DataSetColumn="short_desc" />
+              <Mapping SourceColumn="long_desc" DataSetColumn="long_desc" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="StudentNumber" DataSetColumn="StudentNumber" />
+              <Mapping SourceColumn="fname" DataSetColumn="fname" />
+              <Mapping SourceColumn="lname" DataSetColumn="lname" />
+              <Mapping SourceColumn="CourseID" DataSetColumn="CourseID" />
+              <Mapping SourceColumn="StreamID" DataSetColumn="StreamID" />
+              <Mapping SourceColumn="SupervisorID" DataSetColumn="SupervisorID" />
+              <Mapping SourceColumn="FileId" DataSetColumn="FileId" />
+              <Mapping SourceColumn="FileName" DataSetColumn="FileName" />
+              <Mapping SourceColumn="ContentType" DataSetColumn="ContentType" />
+              <Mapping SourceColumn="Content" DataSetColumn="Content" />
+              <Mapping SourceColumn="FileType" DataSetColumn="FileType" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SubmissionDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SubmissionDataSet" msprop:Generator_UserDSName="SubmissionDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Submissions" msprop:Generator_TableClassName="SubmissionsDataTable" msprop:Generator_TableVarName="tableSubmissions" msprop:Generator_TablePropName="Submissions" msprop:Generator_RowDeletingName="SubmissionsRowDeleting" msprop:Generator_RowChangingName="SubmissionsRowChanging" msprop:Generator_RowEvHandlerName="SubmissionsRowChangeEventHandler" msprop:Generator_RowDeletedName="SubmissionsRowDeleted" msprop:Generator_UserTableName="Submissions" msprop:Generator_RowChangedName="SubmissionsRowChanged" msprop:Generator_RowEvArgName="SubmissionsRowChangeEvent" msprop:Generator_RowClassName="SubmissionsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" />
+              <xs:element name="linkedin_url" msprop:Generator_ColumnVarNameInTable="columnlinkedin_url" msprop:Generator_ColumnPropNameInRow="linkedin_url" msprop:Generator_ColumnPropNameInTable="linkedin_urlColumn" msprop:Generator_UserColumnName="linkedin_url" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="project_title" msprop:Generator_ColumnVarNameInTable="columnproject_title" msprop:Generator_ColumnPropNameInRow="project_title" msprop:Generator_ColumnPropNameInTable="project_titleColumn" msprop:Generator_UserColumnName="project_title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="short_desc" msprop:Generator_ColumnVarNameInTable="columnshort_desc" msprop:Generator_ColumnPropNameInRow="short_desc" msprop:Generator_ColumnPropNameInTable="short_descColumn" msprop:Generator_UserColumnName="short_desc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="long_desc" msprop:Generator_ColumnVarNameInTable="columnlong_desc" msprop:Generator_ColumnPropNameInRow="long_desc" msprop:Generator_ColumnPropNameInTable="long_descColumn" msprop:Generator_UserColumnName="long_desc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
+              <xs:element name="StudentNumber" msprop:Generator_ColumnVarNameInTable="columnStudentNumber" msprop:Generator_ColumnPropNameInRow="StudentNumber" msprop:Generator_ColumnPropNameInTable="StudentNumberColumn" msprop:Generator_UserColumnName="StudentNumber" type="xs:int" />
+              <xs:element name="fname" msprop:Generator_ColumnVarNameInTable="columnfname" msprop:Generator_ColumnPropNameInRow="fname" msprop:Generator_ColumnPropNameInTable="fnameColumn" msprop:Generator_UserColumnName="fname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lname" msprop:Generator_ColumnVarNameInTable="columnlname" msprop:Generator_ColumnPropNameInRow="lname" msprop:Generator_ColumnPropNameInTable="lnameColumn" msprop:Generator_UserColumnName="lname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CourseID" msprop:Generator_ColumnVarNameInTable="columnCourseID" msprop:Generator_ColumnPropNameInRow="CourseID" msprop:Generator_ColumnPropNameInTable="CourseIDColumn" msprop:Generator_UserColumnName="CourseID" type="xs:int" />
+              <xs:element name="StreamID" msprop:Generator_ColumnVarNameInTable="columnStreamID" msprop:Generator_ColumnPropNameInRow="StreamID" msprop:Generator_ColumnPropNameInTable="StreamIDColumn" msprop:Generator_UserColumnName="StreamID" type="xs:int" />
+              <xs:element name="SupervisorID" msprop:Generator_ColumnVarNameInTable="columnSupervisorID" msprop:Generator_ColumnPropNameInRow="SupervisorID" msprop:Generator_ColumnPropNameInTable="SupervisorIDColumn" msprop:Generator_UserColumnName="SupervisorID" type="xs:int" />
+              <xs:element name="FileId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnFileId" msprop:Generator_ColumnPropNameInRow="FileId" msprop:Generator_ColumnPropNameInTable="FileIdColumn" msprop:Generator_UserColumnName="FileId" type="xs:int" />
+              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ContentType" msprop:Generator_ColumnVarNameInTable="columnContentType" msprop:Generator_ColumnPropNameInRow="ContentType" msprop:Generator_ColumnPropNameInTable="ContentTypeColumn" msprop:Generator_UserColumnName="ContentType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Content" msprop:Generator_ColumnVarNameInTable="columnContent" msprop:Generator_ColumnPropNameInRow="Content" msprop:Generator_ColumnPropNameInTable="ContentColumn" msprop:Generator_UserColumnName="Content" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="FileType" msprop:Generator_ColumnVarNameInTable="columnFileType" msprop:Generator_ColumnPropNameInRow="FileType" msprop:Generator_ColumnPropNameInTable="FileTypeColumn" msprop:Generator_UserColumnName="FileType" type="xs:int" />
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Submissions" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
