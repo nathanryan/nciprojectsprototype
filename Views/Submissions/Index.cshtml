@@ -1,57 +1,66 @@
-﻿@model IEnumerable<NCIProjects.Models.Submission>
+﻿@model PagedList.IPagedList<NCIProjects.Models.Submission>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Student Submissions";
 }
 
-<h2>Index</h2>
+<!-- Export PDF -->
+
+    
+    <h2>Student Submissions</h2>
+    
+
+@using (Html.BeginForm(Html.BeginForm("Index", "Students", FormMethod.Get)))
+{ <p> Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p> }
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.fname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.linkedin_url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.project_title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.short_desc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.long_desc)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.fname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.linkedin_url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.project_title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.short_desc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.long_desc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    <div class="container">
+        <a href="Report.aspx" class="btn btn-info" role="button">Export As PDF</a>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><b>@Html.DisplayFor(modelItem => item.project_title) </b></h3>
+                        </div>
+                        <div class="panel-body" style="color: #000">
+                            <div class="col-md-3">
+                                <!-- Display Profile Picture -->
+                                @if (item.Student.Files.Any(f => f.FileType == FileType.Avatar))
+                                {
+                                    <img src="~/File?id=@item.Student.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" height="200" width="200" />
+                                }
+                                </div>
 
-</table>
+                                <ul style="list-style-type:none">
+                                    <li><b>Student Name: </b>@Html.DisplayFor(modelItem => item.Student.lname), @Html.DisplayFor(modelItem => item.Student.fname)</li>
+
+                                    <li><b>Project Title: </b>@Html.DisplayFor(modelItem => item.project_title)</li>
+
+                                    <li><b>LinkedIn Address: </b>@Html.DisplayFor(modelItem => item.linkedin_url)</li>
+
+                                    <li>@Html.DisplayFor(modelItem => item.short_desc)</li>
+
+                                    <li><b>Technologies Used</b></li>
+
+                                </ul>
+                            </div>
+                        <div class="panel-footer" style="color: #000">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <br /> Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -13,7 +13,7 @@
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
         {
             <dt>
-                Avatar
+                @Html.Label("Avatar:")
             </dt>
             <dd>
                 <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
@@ -22,31 +22,15 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.Course.course_name)
+            @Html.Label("Student Name:")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Course.course_name)
+            @Html.DisplayFor(model => model.fname) @Html.DisplayFor(model => model.lname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Stream.stream_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Stream.stream_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Supervisor.first_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Supervisor.first_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentNumber)
+            @Html.Label("Student Number:")
         </dt>
 
         <dd>
@@ -54,19 +38,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fname)
+            @Html.Label("Course:")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fname)
+            @Html.DisplayFor(model => model.Course.course_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lname)
+            @Html.Label("Stream:")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.lname)
+            @Html.DisplayFor(model => model.Stream.stream_name)
+        </dd>
+
+        <dt>
+            @Html.Label("Supervisor:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supervisor.first_name) @Html.DisplayFor(model => model.Supervisor.last_name)
         </dd>
 
     </dl>

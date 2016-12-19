@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using NCIProjects.Models;
 
+using System.Data.Entity.Infrastructure;
+using PagedList;
+
 namespace NCIProjects.Controllers
 {
     public class SubmissionsController : Controller
@@ -15,11 +18,37 @@ namespace NCIProjects.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Submissions
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-          //var submissions = db.Submissions.Include(s => s.Student).Include(s => s.StudentTechnologies);
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else { searchString = currentFilter; }
+
+            ViewBag.CurrentFilter = searchString;
+
+            //var submissions = db.Submissions.Include(s => s.Student).Include(s => s.StudentTechnologies);
             var submissions = db.Submissions.Include(s => s.Student);
-            return View(submissions.ToList());
+
+            if(!String.IsNullOrEmpty(searchString)) { submissions = submissions.Where(s => s.Student.lname.ToUpper().Contains(searchString.ToUpper()) || s.Student.fname.ToUpper().Contains(searchString.ToUpper())); }
+
+            //sort Students by Last Name
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    submissions = submissions.OrderByDescending(s => s.Student.lname);
+                    break;
+                default:
+                    submissions = submissions.OrderBy(s => s.Student.lname);
+                    break;
+            }
+            int pageSize = 2; int pageNumber = (page ?? 1);
+
+            return View(submissions.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Submissions/Details/5
@@ -29,7 +58,9 @@ namespace NCIProjects.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Submission submission = db.Submissions.Find(id);
+            Submission submission = db.Submissions.Include(s => s.Student.Files).SingleOrDefault(s => s.ID == id);
+            //  Submission submission = db.Submissions.Find(id);
+            // Student student = db.Students.Include(s => s.Files).SingleOrDefault(s => s.StudentID == id);
             if (submission == null)
             {
                 return HttpNotFound();

@@ -13,7 +13,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" Height="650px" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
-            <LocalReport ReportPath="Report1.rdlc">
+            <LocalReport ReportPath="Report1.rdlc" EnableExternalImages="true">
                 <DataSources>
                     <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
                 </DataSources>

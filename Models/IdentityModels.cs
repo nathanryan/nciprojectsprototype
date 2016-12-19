@@ -80,7 +80,11 @@ namespace NCIProjects.Models
         public int StudentID { get; set; }
         public String linkedin_url { get; set; }
         public String project_title { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public String short_desc { get; set; }
+   
+        [DataType(DataType.MultilineText)]
         public String long_desc { get; set; }
       //public int StudentTechnologiesID { get; set; }
 
